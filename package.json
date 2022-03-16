@@ -1,0 +1,29 @@
+{
+  "name": "jackierobinson",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/questcrypto/JackieRobinson.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/questcrypto/JackieRobinson/issues"
+  },
+  "homepage": "https://github.com/questcrypto/JackieRobinson#readme",
+  "devDependencies": {
+    "@openzeppelin/contracts": "^4.4.2",
+    "@truffle/hdwallet-provider": "^2.0.1",
+    "chai": "^4.3.6",
+    "chai-as-promised": "^7.1.1",
+    "dotenv": "^14.3.2",
+    "truffle": "^5.4.30",
+    "truffle-plugin-verify": "^0.5.21"
+  }
+}
