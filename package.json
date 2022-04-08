@@ -1,0 +1,35 @@
+{
+  "name": "quest-protocol-v1",
+  "version": "1.0.0",
+  "description": "sashaflores@questcrypto.com",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/questcrypto/quest-protocol-V1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/questcrypto/quest-protocol-V1/issues"
+  },
+  "homepage": "https://github.com/questcrypto/quest-protocol-V1#readme",
+  "dependencies": {
+    "@openzeppelin/truffle-upgrades": "^1.14.0",
+    "@truffle/contract": "^4.5.1",
+    "@truffle/hdwallet-provider": "^2.0.4",
+    "bn.js": "^5.2.0",
+    "chai": "^4.3.6",
+    "chai-as-promised": "^7.1.1",
+    "dotenv": "^16.0.0",
+    "ganache": "^7.0.3",
+    "truffle-plugin-verify": "^0.5.24",
+    "web3": "^1.7.1"
+  }
+}
