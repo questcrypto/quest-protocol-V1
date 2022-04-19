@@ -10,7 +10,7 @@ abstract contract PausableUpgradeable is Initializable, ContextUpgradeable {
 
     event Unpaused(address account);
 
-    bool private _paused;
+    bool internal _paused;
 
 
     function __Pausable_init() internal onlyInitializing {

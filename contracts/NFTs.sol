@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
 
+import "./Proxies/Initializable.sol";
+import "./Utils/ContextUpgradeable.sol";
+import "./Utils/ERC165Upgradeable.sol";
 import "./Interfaces/IERC1155Upgradeable.sol";
 import "./Interfaces/IERC1155MetadataURIUpgradeable.sol";
 import "./Tokens/ERC1155HolderUpgradeable.sol";
-import "./Utils/ERC165Upgradeable.sol";
-import "./Utils/ContextUpgradeable.sol";
+import "./Access/AccessControlUpgradeable.sol";
+import "./Proxies/UUPSUpgradeable.sol";
 import "./Utils/AddressUpgradeable.sol";
 import "./Utils/StringsUpgradeable.sol";
-import "./Access/AccessControlUpgradeable.sol";
-import "./Proxies/Initializable.sol";
-import "./Proxies/UUPSUpgradeable.sol";
 
 
 contract NFTs is Initializable, ContextUpgradeable, ERC165Upgradeable, IERC1155Upgradeable, IERC1155MetadataURIUpgradeable, ERC1155HolderUpgradeable , AccessControlUpgradeable, UUPSUpgradeable {
@@ -20,7 +20,7 @@ contract NFTs is Initializable, ContextUpgradeable, ERC165Upgradeable, IERC1155U
 
   address assetWallet; //UI:1.Owner Details
   string private contractName;
-  string private contractDescription;
+  uint256 private taxId;
   string private _uri;
   // Array of only 6 tokens that are available to mint
   uint256[5] private availableTokens;
@@ -30,17 +30,12 @@ contract NFTs is Initializable, ContextUpgradeable, ERC165Upgradeable, IERC1155U
   mapping(address => mapping(address => bool)) private _operatorApprovals;
   // Total supply of each id
   mapping(uint256 => uint256) private _totalSupply;
-  // To prevent duplicate properties
-  mapping(string => bool) private propertyExists;
+  
+
 
   mapping(address => Property) public propertyDetails;
   mapping(uint256 => address) public erc20Tansfers; 
 
-
-  struct TokensIssued{
-    uint256 TokenId;
-    uint256 TimeStamp;
-  }
 
   struct Property{
     string[] ImagesHash;  //UI:6. property Images
@@ -54,7 +49,7 @@ contract NFTs is Initializable, ContextUpgradeable, ERC165Upgradeable, IERC1155U
     string[] Floors; //UI:8. 
     string[] Amenities;  //UI:9.
     string[] PropertyInfo;  //UI:2. Property Info.
-    TokensIssued[] tokens;
+    uint256[] tokens;
   }
 
   uint256 public constant TITLE = 0;
@@ -64,28 +59,27 @@ contract NFTs is Initializable, ContextUpgradeable, ERC165Upgradeable, IERC1155U
   uint256 public constant OCCUPANCY_RIGHT = 4;
   uint256 public constant GOVERNANCE_RIGHT = 5;
 
-  //bytes32 public constant CONTRACT_ADMIN_ROLE = keccak256(abi.encodePacked("CONTRACT_ADMIN_ROLE"));
+
   bytes32 public constant TREASURY_ROLE = keccak256(abi.encodePacked("TREASURY_ROLE"));
-  bytes32 public constant OPS_ROLE = keccak256(abi.encodePacked("OPS_ROLE"));
+  
 
-
-  function initialize(string memory uri_, address treasury, address opsController, string memory _contractName, string memory _contractDescription) public initializer {
+  function initialize(string memory uri_, address _assetWallet, address hoa, address treasury, string memory _contractName, uint256 propTaxId) public virtual override initializer {
     __ERC1155Holder_init();
     __UUPSUpgradeable_init();
     __AccessControl_init();
   
     contractName = _contractName;
-    contractDescription = _contractDescription;
+    assetWallet = _assetWallet;
+    taxId = propTaxId;
+
     _setURI(uri_);
+    
     _setRoleAdmin(DEFAULT_ADMIN_ROLE, DEFAULT_ADMIN_ROLE);
-    //_setRoleAdmin(CONTRACT_ADMIN_ROLE, DEFAULT_ADMIN_ROLE);
-
-    _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
-    //_setupRole(CONTRACT_ADMIN_ROLE, contractAdmin);
+    _setupRole(DEFAULT_ADMIN_ROLE, hoa);
     _setupRole(TREASURY_ROLE, treasury);
-    _setupRole(OPS_ROLE, opsController);
-
-    propertyExists[uri_] = true;
+  
+    
+    _mint(address(this), TITLE, 1, "");    
   }
 
 
@@ -93,10 +87,6 @@ contract NFTs is Initializable, ContextUpgradeable, ERC165Upgradeable, IERC1155U
     require(exists(id),"NFT: non existent token");
 
     return string(abi.encodePacked(_uri, id.toString()));
-  }
-
-  function getContractAddress() public view override returns(address) {
-    return address(this);
   }
 
   function totalSupply(uint256 id) public view override returns (uint256) {
@@ -116,7 +106,7 @@ contract NFTs is Initializable, ContextUpgradeable, ERC165Upgradeable, IERC1155U
     interfaceId == type(IERC1155Upgradeable).interfaceId ||
     interfaceId == type(IERC1155MetadataURIUpgradeable).interfaceId ||
     interfaceId == type(AccessControlUpgradeable).interfaceId ||
-    interfaceId == type(ERC1155ReceiverUpgradeable).interfaceId ||
+
     super.supportsInterface(interfaceId);
   }
 
@@ -141,7 +131,6 @@ contract NFTs is Initializable, ContextUpgradeable, ERC165Upgradeable, IERC1155U
   }
 
   function assetDetails(
-    address _assetWallet, 
     string[] memory imageshash,
     string[] memory assetAddress,
     string[] memory neighborhood,
@@ -155,7 +144,7 @@ contract NFTs is Initializable, ContextUpgradeable, ERC165Upgradeable, IERC1155U
     string[] memory info
   ) public virtual override {
     require(hasRole(DEFAULT_ADMIN_ROLE, msg.sender), "NFT: unauthorized personnel");
-    assetWallet =  _assetWallet;
+   
     propertyDetails[assetWallet].ImagesHash = imageshash;
     propertyDetails[assetWallet].Address = assetAddress;
     propertyDetails[assetWallet].SchoolsDist = neighborhood;
@@ -167,22 +156,19 @@ contract NFTs is Initializable, ContextUpgradeable, ERC165Upgradeable, IERC1155U
     propertyDetails[assetWallet].Floors = floors;
     propertyDetails[assetWallet].Amenities = amenities;
     propertyDetails[assetWallet].PropertyInfo = info;
-
-    emit AssetAdded (assetWallet, imageshash, docs);
-
   }
 
-  function transferToVault(uint256 id, address toContract) public virtual override onlyRole(DEFAULT_ADMIN_ROLE) returns(uint256, address){
+  function transferToVault(uint256 id, address vaultContract) external virtual onlyRole(TREASURY_ROLE) returns(uint256, address){
     require(balanceOf(address(this), id) == 1, 'NFT: balance is not enough');
-    require(AddressUpgradeable.isContract(toContract), "NFT: transfer to vault contract only");
+    require(AddressUpgradeable.isContract(vaultContract), "NFT: transfer to vault contract only");
 
-    erc20Tansfers[id] = toContract;
+    erc20Tansfers[id] = vaultContract;
 
-    _safeTransferFrom(address(this), toContract, id, 1, "");
+    _safeTransferFrom(address(this), vaultContract, id, 1, "");
 
-    emit TransferToVault(id, toContract);
+    emit TransferToVault(id, vaultContract);
 
-    return (id, toContract);
+    return (id, vaultContract);
   }
 
 
@@ -191,35 +177,24 @@ contract NFTs is Initializable, ContextUpgradeable, ERC165Upgradeable, IERC1155U
     
     _mint(address(this), id, 1, "");
 
-    propertyDetails[assetWallet].tokens.push(TokensIssued({TokenId: id, TimeStamp: block.timestamp}));
+    propertyDetails[assetWallet].tokens.push(id);
 
     return id;
   }
 
-  function mintBatchNfts(uint256[] memory ids, uint256[] memory amounts) public virtual override onlyRole(TREASURY_ROLE) returns(uint256[] memory) {
-  
-    uint256 i = 0;
-    for (i = 0; i <= ids.length; i++) {
-
-      propertyDetails[assetWallet].tokens.push(TokensIssued({TokenId: ids[i], TimeStamp: block.timestamp}));
-
-    }
-
-    require(!exists(ids[i]) && ids[i] <= availableTokens.length, "NFT: token is minted or out of range");
-
-    _mintBatch(address(this),ids, amounts,"");
-
-     return ids;
-  }
-
   function burnNFT(uint256 id) public virtual override onlyRole(TREASURY_ROLE) {
-    require(exists(id), "NFT: NFT does not exist");
+    require(exists(id), "NFT: NFT not exist");
 
     _burn(address(this), id, 1);
   }
 
-  function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(OPS_ROLE) {
-    require(AddressUpgradeable.isContract(newImplementation), "Quest: new Implementation must be a contract");
+  function version() pure public virtual returns (string memory) {
+    return "V1.0.0";
+  }
+
+  function _authorizeUpgrade(address newImplementation) internal virtual override onlyRole(DEFAULT_ADMIN_ROLE) {
+    require(AddressUpgradeable.isContract(newImplementation), "NFT: new Implementation must be a contract");
+    require(newImplementation != address(0), "NFT: set to zero address");
   }
 
 
@@ -297,7 +272,7 @@ contract NFTs is Initializable, ContextUpgradeable, ERC165Upgradeable, IERC1155U
 
   function _mintBatch(address to, uint256[] memory ids, uint256[] memory amounts, bytes memory data) internal virtual {
     require(to != address(0), "NFT: mint to the zero address");
-    require(ids.length == amounts.length, "NFT: ids & amounts length mismatch");
+  
 
     address operator = _msgSender();
 
@@ -388,5 +363,9 @@ contract NFTs is Initializable, ContextUpgradeable, ERC165Upgradeable, IERC1155U
   }
 
 }
+
+
+
+ 
 
 

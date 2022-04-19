@@ -1,29 +1,29 @@
 {
-  "name": "jackierobinson",
+  "name": "Quest-Protocol-V1",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "truffle-config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/questcrypto/JackieRobinson.git"
+    "url": "git+https://github.com/questcrypto/Quest-Protocol-V1.git"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/questcrypto/JackieRobinson/issues"
+    "url": "https://github.com/questcrypto/Quest-Protocol-V1/issues"
   },
-  "homepage": "https://github.com/questcrypto/JackieRobinson#readme",
+  "homepage": "https://github.com/questcrypto/Quest-Protocol-V1#readme",
   "devDependencies": {
-    "@openzeppelin/contracts": "^4.4.2",
-    "@truffle/hdwallet-provider": "^2.0.1",
-    "chai": "^4.3.6",
-    "chai-as-promised": "^7.1.1",
-    "dotenv": "^14.3.2",
     "truffle": "^5.4.30",
     "truffle-plugin-verify": "^0.5.21"
+  },
+  "dependencies": {
+    "@truffle/contract": "^4.5.1",
+    "bn.js": "^5.2.0",
+    "web3": "^1.7.1"
   }
 }

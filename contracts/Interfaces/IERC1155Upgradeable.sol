@@ -17,7 +17,6 @@ interface IERC1155Upgradeable is IERC165Upgradeable{
 
     event URI(string value, uint256 indexed id);
 
-    function getContractAddress() external view returns(address);
 
     function totalSupply(uint256 id) external view returns(uint256);
 
@@ -29,7 +28,7 @@ interface IERC1155Upgradeable is IERC165Upgradeable{
 
     function mintNft(uint256 id) external returns(uint256);
 
-    function mintBatchNfts(uint256[] memory ids, uint256[] memory amounts) external returns(uint256[] memory);
+    function mintBatchNfts(uint256[] memory ids, uint256[] memory amounts) external returns(uint256[] memory, uint256[] memory);
 
     function burnNFT(uint256 id) external;
 
@@ -44,7 +43,6 @@ interface IERC1155Upgradeable is IERC165Upgradeable{
     function safeBatchTransferFrom(address from, address to, uint256[] calldata ids, uint256[] calldata amounts, bytes calldata data) external;
 
     function assetDetails(
-        address wallet,
         string[] memory picHash,
         string[] memory physicalAddress,
         string[] memory community,
@@ -57,6 +55,4 @@ interface IERC1155Upgradeable is IERC165Upgradeable{
         string[] memory extras,
         string[] memory data
     ) external;
-
-
 } 
