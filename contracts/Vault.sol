@@ -9,19 +9,16 @@ import "./ERC20Upgradeable.sol";
 import "./Utils/EnumerableMap.sol";
 import "./Access/AccessControlUpgradeable.sol";
 import "./Utils/AddressUpgradeable.sol";
-import "./Utils/SafeMath.sol";
 import "./Security/ReentrancyGuardUpgradeable.sol";
 import "./Interfaces/IVault.sol";
 import "./Interfaces/IVaultFactory.sol";
 import "./NFTs.sol";
 
 
-
 contract Vault is Initializable, ERC20Upgradeable, IVault, ERC1155HolderUpgradeable, AccessControlUpgradeable, UUPSUpgradeable, ReentrancyGuardUpgradeable {
 
   using AddressUpgradeable for address;
   using EnumerableMap for EnumerableMap.AddressToUintMap;
-  using SafeMath for uint256;
   using SafeERC20 for IERC20;
 
 
@@ -29,28 +26,40 @@ contract Vault is Initializable, ERC20Upgradeable, IVault, ERC1155HolderUpgradea
   NFTs internal Tokens;
   IERC20 private USDC ;
 
-
-
   //vault params
   uint256 internal tokenId;
-  uint256 internal vaultId; //to be in factory better
   bool private _active = false;
   uint256 private timeStamp = block.timestamp;
   uint256 private listedPrice;
+  uint256 public usdcCounterIn;
+  uint256 public usdcCounterOut;
 
+  uint256 private questId;
 
   //Enumberable mapping from address to it's share of fractions
   EnumerableMap.AddressToUintMap internal fractionsMap;
- 
+  address[] owners;
+
+  bytes32 public constant TREASURY_ROLE = keccak256(abi.encodePacked("TREASURY_ROLE"));
+
+
+
    modifier ActiveVault() {
     require(_active == true, "Vault: has to be active");
     _;
   }
 
-
-  bytes32 public constant TREASURY_ROLE = keccak256(abi.encodePacked("TREASURY_ROLE"));
   
-  function initialize(NFTs _Tokens, address hoa, address treasury, string memory name_, string memory symbol_) public virtual initializer {
+  
+  function initialize(
+    NFTs _Tokens, 
+    address hoa, 
+    address treasury, 
+    string memory name_, 
+    string memory symbol_, 
+    uint256 serialNo, 
+    uint256 _tokenId
+  ) public virtual initializer {
     __ERC20_init(name_, symbol_);
     __ERC1155Holder_init();
     __AccessControl_init();
@@ -61,16 +70,38 @@ contract Vault is Initializable, ERC20Upgradeable, IVault, ERC1155HolderUpgradea
     _setupRole(TREASURY_ROLE, treasury);
     
     Tokens = _Tokens;
-    require(address(Tokens) != address(0), "Vault: wrong asset address");
+    require(address(Tokens) != address(0), "Vault: asset is zero address");
     
-    USDC = IERC20(0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174); 
+    USDC = IERC20(0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174);
+    bool success = USDC.approve(address(this), listedPrice);
+    require(success, "Vault: unsuccessful approval");
+
+    questId = serialNo;
+    tokenId = _tokenId;
 
     _active = true;
   }
 
+  function sealVault() external virtual override ActiveVault onlyRole(DEFAULT_ADMIN_ROLE) returns(bool) {
+    _active = false;
 
-  function _setPrice(uint256 newPrice) internal {
-    listedPrice = newPrice;
+    emit VaultSealed(_active, timeStamp);
+
+    return _active;
+  }
+
+  function reactiveVault() external virtual override onlyRole(DEFAULT_ADMIN_ROLE) returns(bool){
+    require(_active == false,"Vault: not sealed to reactive");
+    
+    _active = true;
+
+    emit VaultReoponed(_active, timeStamp);
+
+    return _active;
+  }
+
+  function isActive() external view virtual override returns(bool) {
+    return _active;
   }
 
 
@@ -83,77 +114,89 @@ contract Vault is Initializable, ERC20Upgradeable, IVault, ERC1155HolderUpgradea
     super.supportsInterface(interfaceId);
   }
 
-
   function balanceOf(address account, uint256 _tokenId) public view returns(uint256) {
     return Tokens.balanceOf(account, _tokenId);
   }
 
-  function isActive() public view virtual override returns(bool) {
-    return _active;
-  }
+  function wrapNFT(uint256 _listedPrice) public virtual ActiveVault onlyRole(TREASURY_ROLE) {
+    listedPrice = _listedPrice;    
 
-
-  function sealVault() public virtual override ActiveVault onlyRole(DEFAULT_ADMIN_ROLE) returns(bool) {
-    _active = false;
-
-    emit VaultSealed(_active, timeStamp);
-
-    return _active;
-  }
-
-  function listNFT(uint256 _tokenId, uint256 _listedPrice) public virtual ActiveVault onlyRole(TREASURY_ROLE) returns(uint256, uint256) {
-    tokenId = _tokenId;
-    _setPrice(_listedPrice);
-    
     require(balanceOf(address(this), tokenId) == 1, "Vault: token is not received yet");
 
-    emit NFTReceived(tokenId, _listedPrice);
+    _mint(address(this), listedPrice);
 
-    return (tokenId, _listedPrice);
+    emit NFTWrapped(tokenId, listedPrice);
   }
 
-  function buyFractions(uint256 _amount) public payable nonReentrant virtual {
-    require(msg.sender != address(0), "Vault: buyer is zero address");
-    require(_amount <= listedPrice && _amount > 0, "Vault: zero amount or exceeds available fractions");
+  function availableFractions() external view returns(uint256) {
+    return balanceOf(address(this));
+  }
 
-    uint256 remainBalance = listedPrice.sub(_amount);
-    require(_amount <= remainBalance, "Vault: purchase is greater than available fractions");
 
-    if(USDC.allowance(msg.sender, address(this)) <= 0) {
-      revert("Vault: not enough USDC allowance approved");
-    } else {
-      USDC.safeTransferFrom(msg.sender, address(this), _amount);
-
-      emit TransferReceived(_amount, _msgSender(), address(this));
-    }
+  function claimUnsold(address account) external ActiveVault onlyRole(TREASURY_ROLE) {
     
-    fractionsMap.set(msg.sender, _amount);
+    _transfer(address(this), account, balanceOf(address(this)));
 
-    _mint(msg.sender, _amount);
+    emit UnsoldFractionsClaimed(account, balanceOf(address(this)));
+  }
 
-    emit QuestMinted(_msgSender(), _amount, remainBalance);
+  
+  function vaultUsdcBalance() public view returns(uint256) {
+    return USDC.balanceOf(address(this));
+  }
+
+  function ownerIndex(uint256 index) public view returns(address, uint256) {
+    return fractionsMap.at(index);
+  }
+
+  function withdrawFractions(uint256 _deposit) public ActiveVault nonReentrant virtual {  
+    require(msg.sender != address(0), "Vault: buyer is zero address");
+    require(_deposit <= _totalSupply && _deposit > 0, "Vault: zero amount or exceeds available fractions");
+    
+    if(_deposit > USDC.allowance(_msgSender(), address(this))) {
+      revert("Vault: insufficient allowance of USDC");
+    } else {
+      USDC.safeTransferFrom(_msgSender(), address(this), _deposit);
+      usdcCounterIn++;
+      owners.push(msg.sender);
+      fractionsMap.set(msg.sender, _deposit);
+      _transfer(address(this), _msgSender(), _deposit);
+
+      emit FractionPurchased(_deposit, _msgSender());
+    }    
+  }
+
+  function allOwners() public view returns(address[] memory) {
+    return owners;
   }
 
   //will take back quest and give usdc to end user, will not burn returned quest
-  function returnFractions(uint256 refund) public payable virtual override {
-    address sender = payable(msg.sender);
-    require(sender != address(0), "Vault: transfer to zero address");
-    
-    uint256 userShare = _balances[sender];
-    require(userShare <= refund, "Vault: refund exceeds recipient's balance");
-    _balances[sender] = userShare.sub(refund);
-    _totalSupply.add(refund);
+  function returnFractions(address from, uint256 share) public virtual override ActiveVault onlyRole(TREASURY_ROLE) {
+    require(fractionsMap.contains(from), "Vault: address does not exist");
 
-    fractionsMap.remove(sender);
+    if(share == balanceOf(from)) {
+      fractionsMap.remove(from);
+      _balances[from] -= share;
+      _balances[address(this)] += share;
+      USDC.safeTransfer(from, share);
+      usdcCounterOut++;
+      for(uint256 i = 0; i <= owners.length - 1; i++) {
+        owners[i] = owners[i + 1];
+        owners.pop();
+      }
+     
+      emit FractionsReturned(from, share);
 
-    USDC.safeTransfer(sender, refund);
-
-    emit FractionsReturned(sender, refund);
+    } else {
+      revert("Vault: share should be equal balance");
+    }  
   }
 
-  function withdrawNFT(address to, uint256 _tokenId) public virtual ActiveVault onlyRole(TREASURY_ROLE) returns(uint256) {
+  
+  function unwrapNFT(address to, uint256 _tokenId) public virtual ActiveVault onlyRole(TREASURY_ROLE) {
     tokenId = _tokenId;
     require(to != address(0), "Vault: transfer to zero address");
+    require(balanceOf(address(this)) >= listedPrice, "Vault: burn amount should equal price");
     
     Tokens.safeTransferFrom(address(this), to, _tokenId, 1, "");
     
@@ -162,38 +205,33 @@ contract Vault is Initializable, ERC20Upgradeable, IVault, ERC1155HolderUpgradea
     emit NFTWithdrawal(to, _tokenId, listedPrice);
 
     _doSafeTransferAcceptanceCheck(msg.sender, address(this), to, _tokenId, 1, "");
-
-    return tokenId;
   }
 
-  function burnQuest(address from, uint256 amount) external virtual override ActiveVault onlyRole(TREASURY_ROLE) {
-    require(amount <= _balances[from], "Vault: amount exceeds balance");
+  //helper function to burn quest when needed
+  function burnQuest(address from, uint256 amount) public virtual override ActiveVault onlyRole(TREASURY_ROLE) {
+    require(amount <= balanceOf(from), "Vault: amount exceeds balance");
 
     _burn(from, amount);
 
     emit QuestBurned(from, amount);
   }
 
-  function fractionHolders() external view virtual override returns(uint256) {
+  function transferUSDC(address to, uint256 value) external virtual nonReentrant onlyRole(DEFAULT_ADMIN_ROLE) {
+    USDC.safeTransfer(to, value);
+    usdcCounterOut++;
+    emit UsdcTransferred(to, value);
+  }
+
+  function holdersCount() public view virtual override returns(uint256) {
     return fractionsMap.length();
   }
 
-  function fractionOwnerExists(address owner) external view virtual override returns(bool) {
+  function fractionOwnerExists(address owner) public view virtual override returns(bool) {
     return fractionsMap.contains(owner);
   }
 
-  function getOwnerShare(address owner) external view virtual override returns(uint256) {
+  function getOwnerShare(address owner) public view virtual override returns(uint256) {
     return fractionsMap.get(owner);
-  }
-
-
-  function reactiveVault() public virtual override onlyRole(DEFAULT_ADMIN_ROLE) returns(bool){
-    require(!sealVault(),"Vault: not sealed to reactive");
-    _active = true;
-
-    emit VaultReoponed(_active, timeStamp);
-
-    return _active;
   }
 
   function version() pure public virtual returns (string memory) {

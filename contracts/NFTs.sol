@@ -30,8 +30,8 @@ contract NFTs is Initializable, ContextUpgradeable, ERC165Upgradeable, IERC1155U
   mapping(address => mapping(address => bool)) private _operatorApprovals;
   // Total supply of each id
   mapping(uint256 => uint256) private _totalSupply;
-  // To prevent duplicate properties by unique tax Id
-  mapping(uint256 => bool) private propertyExists;
+  
+
 
   mapping(address => Property) public propertyDetails;
   mapping(uint256 => address) public erc20Tansfers; 
@@ -78,9 +78,8 @@ contract NFTs is Initializable, ContextUpgradeable, ERC165Upgradeable, IERC1155U
     _setupRole(DEFAULT_ADMIN_ROLE, hoa);
     _setupRole(TREASURY_ROLE, treasury);
   
-    _mint(address(this), TITLE, 1, "");
-
-    propertyExists[taxId] = true;
+    
+    _mint(address(this), TITLE, 1, "");    
   }
 
 
@@ -364,8 +363,3 @@ contract NFTs is Initializable, ContextUpgradeable, ERC165Upgradeable, IERC1155U
   }
 
 }
-
-
-
- 
-

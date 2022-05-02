@@ -1,46 +1,48 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
 
-
 interface IVault {
 
-    event NFTReceived(uint256 indexed tokenId, uint256 price); 
+    event NFTWrapped(uint256 indexed tokenId, uint256 indexed price); 
 
-    event TransferReceived(uint256 amount, address indexed from, address to);
-
-    event QuestMinted(address to, uint256 amount, uint256 reaminingFractions);
+    event FractionPurchased(uint256 share, address indexed buyer);  
 
     event FractionsReturned(address sender, uint256 amount);
+
+    event UsdcTransferred(address indexed to, uint256 amount);
 
     event QuestBurned(address indexed, uint256 amount);
 
     event VaultSealed(bool active, uint256 timeStamp);  
 
-    event VaultReoponed(bool active, uint256 timeStamp);
+    event VaultReoponed(bool active, uint256 timeStamp);    
 
     event NFTWithdrawal(address indexed to, uint256 id, uint256 burnedAmount);
 
-    function isActive() external view returns(bool);
+    event UnsoldFractionsClaimed(address indexed to, uint256 amount);
 
-    function balanceOf(address account, uint256 _tokenId) external view returns(uint256);
+    function isActive() external view returns(bool);   
 
-    function listNFT(uint256 tokenId, uint256 price) external returns(uint256, uint256);    
+    function balanceOf(address account, uint256 _tokenId) external view returns(uint256);      
 
-    function buyFractions(uint256 _amount) external payable;
+    function wrapNFT(uint256 price) external;    
 
-    function returnFractions(uint256 refund) external payable;
+    function withdrawFractions(uint256 _amount) external;
 
-    function burnQuest(address from, uint256 amount) external;
+    function returnFractions(address from, uint256 share) external;
 
-    function withdrawNFT(address to, uint256 id) external returns(uint256);
+    function burnQuest(address from, uint256 amount) external;    
 
-    function fractionHolders() external view returns(uint256);
+    function unwrapNFT(address to, uint256 id) external;
 
-    function fractionOwnerExists(address owner) external view returns(bool);
+    function holdersCount() external view returns(uint256);     
 
-    function getOwnerShare(address owner) external view returns(uint256);
-
-    function reactiveVault() external returns(bool);
-
-    function sealVault() external returns(bool);  
+    function fractionOwnerExists(address owner) external view returns(bool);    
+    
+    function getOwnerShare(address owner) external view returns(uint256);   
+    
+    function reactiveVault() external returns(bool);    
+    
+    function sealVault() external returns(bool);
+    
 }

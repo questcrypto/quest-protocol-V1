@@ -21,6 +21,10 @@ contract NFTsFactory is Initializable, INFTsFactory, OwnableUpgradeable, Pausabl
   mapping(address=> address) internal assetsMap;
   address[] internal assets;
 
+  // To prevent duplicate properties by unique tax Id
+  mapping(uint256 => bool) internal propertyExists;
+
+
 
   function __NFTsFactory_init() public virtual override initializer {
     __Ownable_init();
@@ -38,6 +42,9 @@ contract NFTsFactory is Initializable, INFTsFactory, OwnableUpgradeable, Pausabl
     string memory _contractName, 
     uint256 propTaxId
   ) public virtual whenNotPaused onlyOwner returns(address){
+      require(!propertyExists[propTaxId], "NFTs: property already listed");
+      propertyExists[propTaxId] = true;
+   
       ERC1967Proxy proxy = new ERC1967Proxy(
         NFTsAddress, 
         abi.encodeWithSelector(
@@ -50,7 +57,8 @@ contract NFTsFactory is Initializable, INFTsFactory, OwnableUpgradeable, Pausabl
           propTaxId
         )
       );
-      
+
+
       address assetProxy = address(proxy);
       uint256 assetId = assets.length;
   
@@ -63,7 +71,6 @@ contract NFTsFactory is Initializable, INFTsFactory, OwnableUpgradeable, Pausabl
 
       return (assetProxy);
   }
-
 
   function pause() external onlyOwner {
     _pause();

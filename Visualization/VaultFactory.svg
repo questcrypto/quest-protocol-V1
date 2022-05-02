@@ -1,0 +1,221 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="480pt" height="809pt" viewBox="0.00 0.00 479.55 809.00">
+<g id="graph0" class="graph" transform="translate(4,805) scale(1)" data-name="G">
+
+<polygon fill="#2e3e56" stroke="transparent" points="-4,4 -4,-805 475.55,-805 475.55,4 -4,4" style=""/>
+<g id="clust1" class="cluster" data-name="clusterVaultFactory">
+
+<path fill="#445773" stroke="#445773" d="M20,-93C20,-93 451.55,-93 451.55,-93 457.55,-93 463.55,-99 463.55,-105 463.55,-105 463.55,-644 463.55,-644 463.55,-650 457.55,-656 451.55,-656 451.55,-656 20,-656 20,-656 14,-656 8,-650 8,-644 8,-644 8,-105 8,-105 8,-99 14,-93 20,-93" style=""/>
+<text text-anchor="middle" x="235.77" y="-639.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">VaultFactory</text>
+</g>
+<g id="clust2" class="cluster" data-name="clusterAddressUpgradeable">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M289.4,-8C289.4,-8 397.86,-8 397.86,-8 403.86,-8 409.86,-14 409.86,-20 409.86,-20 409.86,-73 409.86,-73 409.86,-79 403.86,-85 397.86,-85 397.86,-85 289.4,-85 289.4,-85 283.4,-85 277.4,-79 277.4,-73 277.4,-73 277.4,-20 277.4,-20 277.4,-14 283.4,-8 289.4,-8" style=""/>
+<text text-anchor="middle" x="343.63" y="-68.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">AddressUpgradeable</text>
+</g>
+<g id="clust3" class="cluster" data-name="cluster_01">
+
+<polygon fill="#2e3e56" stroke="black" points="32.35,-664 32.35,-793 378.13,-793 378.13,-664 32.35,-664" style=""/>
+<text text-anchor="middle" x="205.24" y="-776.4" font-family="Times,serif" font-size="14.00" style="">Legend</text>
+</g>
+<!-- VaultFactory.__VaultFactory_init -->
+<g id="node1" class="node" pointer-events="visible" data-name="VaultFactory.__VaultFactory_init">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="105.35" cy="-605" rx="89.21" ry="18" style=""/>
+<text text-anchor="middle" x="105.35" y="-600.8" font-family="Times,serif" font-size="14.00" style="">__VaultFactory_init</text>
+</g>
+<!-- VaultFactory.__Ownable_init -->
+<g id="node11" class="node" pointer-events="visible" data-name="VaultFactory.__Ownable_init">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="343.13" cy="-497" rx="73.02" ry="18" style=""/>
+<text text-anchor="middle" x="343.13" y="-492.8" font-family="Times,serif" font-size="14.00" style="">__Ownable_init</text>
+</g>
+<!-- VaultFactory.__VaultFactory_init&#45;&gt;VaultFactory.__Ownable_init -->
+<g id="edge1" class="edge" data-name="VaultFactory.__VaultFactory_init-&gt;VaultFactory.__Ownable_init">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M168.38,-592.03C177.73,-588.43 186.86,-583.84 194.71,-578 217.85,-560.78 207.07,-540.53 230.71,-524 241.36,-516.55 253.84,-511.14 266.51,-507.22" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="267.53,-510.57 276.21,-504.5 265.64,-503.83 267.53,-510.57" style=""/>
+</g>
+<!-- VaultFactory.__Pausable_init -->
+<g id="node12" class="node" pointer-events="visible" data-name="VaultFactory.__Pausable_init">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="343.13" cy="-551" rx="72.95" ry="18" style=""/>
+<text text-anchor="middle" x="343.13" y="-546.8" font-family="Times,serif" font-size="14.00" style="">__Pausable_init</text>
+</g>
+<!-- VaultFactory.__VaultFactory_init&#45;&gt;VaultFactory.__Pausable_init -->
+<g id="edge2" class="edge" data-name="VaultFactory.__VaultFactory_init-&gt;VaultFactory.__Pausable_init">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M164.94,-591.58C199.72,-583.62 243.81,-573.52 279.31,-565.39" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="280.11,-568.79 289.08,-563.15 278.55,-561.97 280.11,-568.79" style=""/>
+</g>
+<!-- VaultFactory.__UUPSUpgradeable_init -->
+<g id="node13" class="node" pointer-events="visible" data-name="VaultFactory.__UUPSUpgradeable_init">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="343.13" cy="-605" rx="112.34" ry="18" style=""/>
+<text text-anchor="middle" x="343.13" y="-600.8" font-family="Times,serif" font-size="14.00" style="">__UUPSUpgradeable_init</text>
+</g>
+<!-- VaultFactory.__VaultFactory_init&#45;&gt;VaultFactory.__UUPSUpgradeable_init -->
+<g id="edge3" class="edge" data-name="VaultFactory.__VaultFactory_init-&gt;VaultFactory.__UUPSUpgradeable_init">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M194.82,-605C203.18,-605 211.75,-605 220.34,-605" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="220.44,-608.5 230.44,-605 220.44,-601.5 220.44,-608.5" style=""/>
+</g>
+<!-- VaultFactory.deployVault -->
+<g id="node2" class="node" pointer-events="visible" data-name="VaultFactory.deployVault">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="105.35" cy="-551" rx="58.55" ry="18" style=""/>
+<text text-anchor="middle" x="105.35" y="-546.8" font-family="Times,serif" font-size="14.00" style="">deployVault</text>
+</g>
+<!-- VaultFactory.Vault -->
+<g id="node14" class="node" pointer-events="visible" data-name="VaultFactory.Vault">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="343.13" cy="-335" rx="32.48" ry="18" style=""/>
+<text text-anchor="middle" x="343.13" y="-330.8" font-family="Times,serif" font-size="14.00" style="">Vault</text>
+</g>
+<!-- VaultFactory.deployVault&#45;&gt;VaultFactory.Vault -->
+<g id="edge4" class="edge" data-name="VaultFactory.deployVault-&gt;VaultFactory.Vault">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M160.02,-544.21C172.9,-540.2 185.56,-533.89 194.71,-524 244.79,-469.85 179.05,-414.65 230.71,-362 248.74,-343.62 277,-336.92 300.54,-334.79" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="300.89,-338.28 310.64,-334.12 300.43,-331.29 300.89,-338.28" style=""/>
+</g>
+<!-- VaultFactory.VaultInit -->
+<g id="node15" class="node" pointer-events="visible" data-name="VaultFactory.VaultInit">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="343.13" cy="-389" rx="45.8" ry="18" style=""/>
+<text text-anchor="middle" x="343.13" y="-384.8" font-family="Times,serif" font-size="14.00" style="">VaultInit</text>
+</g>
+<!-- VaultFactory.deployVault&#45;&gt;VaultFactory.VaultInit -->
+<g id="edge5" class="edge" data-name="VaultFactory.deployVault-&gt;VaultFactory.VaultInit">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M159.35,-543.55C172.23,-539.55 185.06,-533.41 194.71,-524 230.93,-488.68 193.46,-450.24 230.71,-416 246,-401.94 267.34,-394.86 287.26,-391.4" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="287.81,-394.86 297.2,-389.94 286.79,-387.93 287.81,-394.86" style=""/>
+</g>
+<!-- VaultFactory.VaultProxyDeployed -->
+<g id="node16" class="node" pointer-events="visible" data-name="VaultFactory.VaultProxyDeployed">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="343.13" cy="-443" rx="93.21" ry="18" style=""/>
+<text text-anchor="middle" x="343.13" y="-438.8" font-family="Times,serif" font-size="14.00" style="">VaultProxyDeployed</text>
+</g>
+<!-- VaultFactory.deployVault&#45;&gt;VaultFactory.VaultProxyDeployed -->
+<g id="edge6" class="edge" data-name="VaultFactory.deployVault-&gt;VaultFactory.VaultProxyDeployed">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M156.85,-541.99C170.04,-537.98 183.64,-532.23 194.71,-524 217.85,-506.78 207.07,-486.53 230.71,-470 238.57,-464.5 247.43,-460.11 256.63,-456.61" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="258,-459.84 266.31,-453.28 255.72,-453.23 258,-459.84" style=""/>
+</g>
+<!-- VaultFactory.vaultById -->
+<g id="node3" class="node" pointer-events="visible" data-name="VaultFactory.vaultById">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="105.35" cy="-497" rx="49.82" ry="18" style=""/>
+<text text-anchor="middle" x="105.35" y="-492.8" font-family="Times,serif" font-size="14.00" style="">vaultById</text>
+</g>
+<!-- VaultFactory.getAllVaults -->
+<g id="node4" class="node" pointer-events="visible" data-name="VaultFactory.getAllVaults">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="105.35" cy="-443" rx="60.27" ry="18" style=""/>
+<text text-anchor="middle" x="105.35" y="-438.8" font-family="Times,serif" font-size="14.00" style="">getAllVaults</text>
+</g>
+<!-- VaultFactory.getAssetVaults -->
+<g id="node5" class="node" pointer-events="visible" data-name="VaultFactory.getAssetVaults">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="105.35" cy="-389" rx="69.51" ry="18" style=""/>
+<text text-anchor="middle" x="105.35" y="-384.8" font-family="Times,serif" font-size="14.00" style="">getAssetVaults</text>
+</g>
+<!-- VaultFactory.vaultCount -->
+<g id="node6" class="node" pointer-events="visible" data-name="VaultFactory.vaultCount">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="105.35" cy="-335" rx="53.91" ry="18" style=""/>
+<text text-anchor="middle" x="105.35" y="-330.8" font-family="Times,serif" font-size="14.00" style="">vaultCount</text>
+</g>
+<!-- VaultFactory.pause -->
+<g id="node7" class="node" pointer-events="visible" data-name="VaultFactory.pause">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="105.35" cy="-281" rx="33.05" ry="18" style=""/>
+<text text-anchor="middle" x="105.35" y="-276.8" font-family="Times,serif" font-size="14.00" style="">pause</text>
+</g>
+<!-- VaultFactory._pause -->
+<g id="node17" class="node" pointer-events="visible" data-name="VaultFactory._pause">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="343.13" cy="-281" rx="37.71" ry="18" style=""/>
+<text text-anchor="middle" x="343.13" y="-276.8" font-family="Times,serif" font-size="14.00" style="">_pause</text>
+</g>
+<!-- VaultFactory.pause&#45;&gt;VaultFactory._pause -->
+<g id="edge7" class="edge" data-name="VaultFactory.pause-&gt;VaultFactory._pause">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M138.64,-281C179.09,-281 248.72,-281 295.09,-281" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="295.19,-284.5 305.19,-281 295.19,-277.5 295.19,-284.5" style=""/>
+</g>
+<!-- VaultFactory.unpause -->
+<g id="node8" class="node" pointer-events="visible" data-name="VaultFactory.unpause">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="105.35" cy="-227" rx="42.86" ry="18" style=""/>
+<text text-anchor="middle" x="105.35" y="-222.8" font-family="Times,serif" font-size="14.00" style="">unpause</text>
+</g>
+<!-- VaultFactory._unpause -->
+<g id="node18" class="node" pointer-events="visible" data-name="VaultFactory._unpause">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="343.13" cy="-227" rx="47.52" ry="18" style=""/>
+<text text-anchor="middle" x="343.13" y="-222.8" font-family="Times,serif" font-size="14.00" style="">_unpause</text>
+</g>
+<!-- VaultFactory.unpause&#45;&gt;VaultFactory._unpause -->
+<g id="edge8" class="edge" data-name="VaultFactory.unpause-&gt;VaultFactory._unpause">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M148.23,-227C186.37,-227 243.02,-227 285.25,-227" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="285.38,-230.5 295.38,-227 285.38,-223.5 285.38,-230.5" style=""/>
+</g>
+<!-- VaultFactory.isPaused -->
+<g id="node9" class="node" pointer-events="visible" data-name="VaultFactory.isPaused">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="105.35" cy="-173" rx="44.67" ry="18" style=""/>
+<text text-anchor="middle" x="105.35" y="-168.8" font-family="Times,serif" font-size="14.00" style="">isPaused</text>
+</g>
+<!-- VaultFactory._authorizeUpgrade -->
+<g id="node10" class="node" pointer-events="visible" data-name="VaultFactory._authorizeUpgrade">
+
+<ellipse fill="#f2c383" stroke="#f2c383" stroke-width="3" cx="105.35" cy="-119" rx="85.08" ry="18" style=""/>
+<text text-anchor="middle" x="105.35" y="-114.8" font-family="Times,serif" font-size="14.00" style="">_authorizeUpgrade</text>
+</g>
+<!-- AddressUpgradeable.isContract -->
+<g id="node19" class="node" pointer-events="visible" data-name="AddressUpgradeable.isContract">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="343.13" cy="-34" rx="50.96" ry="18" style=""/>
+<text text-anchor="middle" x="343.13" y="-29.8" font-family="Times,serif" font-size="14.00" style="">isContract</text>
+</g>
+<!-- VaultFactory._authorizeUpgrade&#45;&gt;AddressUpgradeable.isContract -->
+<g id="edge9" class="edge" data-name="VaultFactory._authorizeUpgrade-&gt;AddressUpgradeable.isContract">
+
+<path fill="none" stroke="white" stroke-width="2" d="M149.32,-103.51C191.22,-88.4 254.67,-65.53 297.22,-50.19" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="298.54,-53.43 306.76,-46.75 296.16,-46.85 298.54,-53.43" style=""/>
+</g>
+<!-- key -->
+<g id="node20" class="node" pointer-events="visible" data-name="key">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="170.35,-760 40.35,-760 40.35,-672 170.35,-672 170.35,-760" style=""/>
+<text text-anchor="start" x="89.99" y="-741.4" font-family="Times,serif" font-size="14.00" style="">Internal Call</text>
+<text text-anchor="start" x="86.1" y="-721.4" font-family="Times,serif" font-size="14.00" style="">External Call</text>
+<text text-anchor="start" x="63.56" y="-701.4" font-family="Times,serif" font-size="14.00" style="">Defined Contract</text>
+<text text-anchor="start" x="49.95" y="-681.4" font-family="Times,serif" font-size="14.00" style="">Undefined Contract</text>
+</g>
+<!-- key2 -->
+<g id="node21" class="node" pointer-events="visible" data-name="key2">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="370.13,-760 316.13,-760 316.13,-672 370.13,-672 370.13,-760" style=""/>
+<text text-anchor="start" x="333.13" y="-741.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<text text-anchor="start" x="333.13" y="-721.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<polygon fill="#445773" stroke="transparent" points="331.13,-696 331.13,-716 356.13,-716 356.13,-696 331.13,-696" style=""/>
+<text text-anchor="start" x="333.13" y="-701.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<polygon fill="none" stroke="#e8726d" points="333.13,-678 333.13,-694 354.13,-694 354.13,-678 333.13,-678" style=""/>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge10" class="edge" data-name="key-&gt;key2">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M163.35,-746C234,-746 254.15,-746 320.06,-746" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="320.13,-749.5 330.13,-746 320.13,-742.5 320.13,-749.5" style=""/>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge11" class="edge" data-name="key-&gt;key2">
+
+<path fill="none" stroke="white" stroke-width="2" d="M163.35,-726C234,-726 254.15,-726 320.06,-726" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="320.13,-729.5 330.13,-726 320.13,-722.5 320.13,-729.5" style=""/>
+</g>
+</g>
+</svg>

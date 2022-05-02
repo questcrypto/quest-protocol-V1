@@ -1,0 +1,221 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="501pt" height="809pt" viewBox="0.00 0.00 500.97 809.00">
+<g id="graph0" class="graph" transform="translate(4,805) scale(1)" data-name="G">
+
+<polygon fill="#2e3e56" stroke="transparent" points="-4,4 -4,-805 496.97,-805 496.97,4 -4,4" style=""/>
+<g id="clust1" class="cluster" data-name="clusterNFTsFactory">
+
+<path fill="#445773" stroke="#445773" d="M20,-93C20,-93 472.97,-93 472.97,-93 478.97,-93 484.97,-99 484.97,-105 484.97,-105 484.97,-644 484.97,-644 484.97,-650 478.97,-656 472.97,-656 472.97,-656 20,-656 20,-656 14,-656 8,-650 8,-644 8,-644 8,-105 8,-105 8,-99 14,-93 20,-93" style=""/>
+<text text-anchor="middle" x="246.49" y="-639.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">NFTsFactory</text>
+</g>
+<g id="clust2" class="cluster" data-name="clusterAddressUpgradeable">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M310.82,-8C310.82,-8 419.28,-8 419.28,-8 425.28,-8 431.28,-14 431.28,-20 431.28,-20 431.28,-73 431.28,-73 431.28,-79 425.28,-85 419.28,-85 419.28,-85 310.82,-85 310.82,-85 304.82,-85 298.82,-79 298.82,-73 298.82,-73 298.82,-20 298.82,-20 298.82,-14 304.82,-8 310.82,-8" style=""/>
+<text text-anchor="middle" x="365.05" y="-68.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">AddressUpgradeable</text>
+</g>
+<g id="clust3" class="cluster" data-name="cluster_01">
+
+<polygon fill="#2e3e56" stroke="black" points="43.07,-664 43.07,-793 399.55,-793 399.55,-664 43.07,-664" style=""/>
+<text text-anchor="middle" x="221.31" y="-776.4" font-family="Times,serif" font-size="14.00" style="">Legend</text>
+</g>
+<!-- NFTsFactory.__NFTsFactory_init -->
+<g id="node1" class="node" pointer-events="visible" data-name="NFTsFactory.__NFTsFactory_init">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="116.07" cy="-605" rx="89.8" ry="18" style=""/>
+<text text-anchor="middle" x="116.07" y="-600.8" font-family="Times,serif" font-size="14.00" style="">__NFTsFactory_init</text>
+</g>
+<!-- NFTsFactory.__Ownable_init -->
+<g id="node11" class="node" pointer-events="visible" data-name="NFTsFactory.__Ownable_init">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="364.55" cy="-497" rx="73.02" ry="18" style=""/>
+<text text-anchor="middle" x="364.55" y="-492.8" font-family="Times,serif" font-size="14.00" style="">__Ownable_init</text>
+</g>
+<!-- NFTsFactory.__NFTsFactory_init&#45;&gt;NFTsFactory.__Ownable_init -->
+<g id="edge1" class="edge" data-name="NFTsFactory.__NFTsFactory_init-&gt;NFTsFactory.__Ownable_init">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M185.29,-593.39C196.23,-589.61 206.95,-584.62 216.13,-578 239.53,-561.14 228.49,-540.53 252.13,-524 262.79,-516.55 275.27,-511.14 287.94,-507.22" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="288.96,-510.57 297.64,-504.5 287.07,-503.83 288.96,-510.57" style=""/>
+</g>
+<!-- NFTsFactory.__Pausable_init -->
+<g id="node12" class="node" pointer-events="visible" data-name="NFTsFactory.__Pausable_init">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="364.55" cy="-551" rx="72.95" ry="18" style=""/>
+<text text-anchor="middle" x="364.55" y="-546.8" font-family="Times,serif" font-size="14.00" style="">__Pausable_init</text>
+</g>
+<!-- NFTsFactory.__NFTsFactory_init&#45;&gt;NFTsFactory.__Pausable_init -->
+<g id="edge2" class="edge" data-name="NFTsFactory.__NFTsFactory_init-&gt;NFTsFactory.__Pausable_init">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M177.36,-591.79C214.39,-583.68 261.78,-573.3 299.48,-565.04" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="300.32,-568.44 309.34,-562.88 298.82,-561.6 300.32,-568.44" style=""/>
+</g>
+<!-- NFTsFactory.__UUPSUpgradeable_init -->
+<g id="node13" class="node" pointer-events="visible" data-name="NFTsFactory.__UUPSUpgradeable_init">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="364.55" cy="-605" rx="112.34" ry="18" style=""/>
+<text text-anchor="middle" x="364.55" y="-600.8" font-family="Times,serif" font-size="14.00" style="">__UUPSUpgradeable_init</text>
+</g>
+<!-- NFTsFactory.__NFTsFactory_init&#45;&gt;NFTsFactory.__UUPSUpgradeable_init -->
+<g id="edge3" class="edge" data-name="NFTsFactory.__NFTsFactory_init-&gt;NFTsFactory.__UUPSUpgradeable_init">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M206.05,-605C217.69,-605 229.77,-605 241.82,-605" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="241.94,-608.5 251.94,-605 241.94,-601.5 241.94,-608.5" style=""/>
+</g>
+<!-- NFTsFactory.deployTokens -->
+<g id="node2" class="node" pointer-events="visible" data-name="NFTsFactory.deployTokens">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="116.07" cy="-551" rx="66" ry="18" style=""/>
+<text text-anchor="middle" x="116.07" y="-546.8" font-family="Times,serif" font-size="14.00" style="">deployTokens</text>
+</g>
+<!-- NFTsFactory.NFTs -->
+<g id="node14" class="node" pointer-events="visible" data-name="NFTsFactory.NFTs">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="364.55" cy="-335" rx="33.08" ry="18" style=""/>
+<text text-anchor="middle" x="364.55" y="-330.8" font-family="Times,serif" font-size="14.00" style="">NFTs</text>
+</g>
+<!-- NFTsFactory.deployTokens&#45;&gt;NFTsFactory.NFTs -->
+<g id="edge4" class="edge" data-name="NFTsFactory.deployTokens-&gt;NFTsFactory.NFTs">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M178.43,-545.12C192.42,-541.07 206.11,-534.51 216.13,-524 267.04,-470.62 200.48,-414.65 252.13,-362 269.98,-343.81 297.85,-337.06 321.25,-334.86" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="321.57,-338.34 331.3,-334.16 321.08,-331.36 321.57,-338.34" style=""/>
+</g>
+<!-- NFTsFactory.PropertyAdded -->
+<g id="node15" class="node" pointer-events="visible" data-name="NFTsFactory.PropertyAdded">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="364.55" cy="-389" rx="70.08" ry="18" style=""/>
+<text text-anchor="middle" x="364.55" y="-384.8" font-family="Times,serif" font-size="14.00" style="">PropertyAdded</text>
+</g>
+<!-- NFTsFactory.deployTokens&#45;&gt;NFTsFactory.PropertyAdded -->
+<g id="edge5" class="edge" data-name="NFTsFactory.deployTokens-&gt;NFTsFactory.PropertyAdded">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M177.43,-544.46C191.53,-540.42 205.51,-534.04 216.13,-524 252.89,-489.23 214.88,-450.24 252.13,-416 261.94,-406.98 274.24,-400.84 287.05,-396.67" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="288.26,-399.97 296.92,-393.86 286.34,-393.24 288.26,-399.97" style=""/>
+</g>
+<!-- NFTsFactory.AssetProxyDeployed -->
+<g id="node16" class="node" pointer-events="visible" data-name="NFTsFactory.AssetProxyDeployed">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="364.55" cy="-443" rx="93.22" ry="18" style=""/>
+<text text-anchor="middle" x="364.55" y="-438.8" font-family="Times,serif" font-size="14.00" style="">AssetProxyDeployed</text>
+</g>
+<!-- NFTsFactory.deployTokens&#45;&gt;NFTsFactory.AssetProxyDeployed -->
+<g id="edge6" class="edge" data-name="NFTsFactory.deployTokens-&gt;NFTsFactory.AssetProxyDeployed">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M174.68,-542.67C189.14,-538.67 203.98,-532.75 216.13,-524 239.53,-507.14 228.49,-486.53 252.13,-470 260,-464.5 268.86,-460.11 278.06,-456.61" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="279.42,-459.84 287.74,-453.28 277.14,-453.23 279.42,-459.84" style=""/>
+</g>
+<!-- NFTsFactory.pause -->
+<g id="node3" class="node" pointer-events="visible" data-name="NFTsFactory.pause">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="116.07" cy="-497" rx="33.05" ry="18" style=""/>
+<text text-anchor="middle" x="116.07" y="-492.8" font-family="Times,serif" font-size="14.00" style="">pause</text>
+</g>
+<!-- NFTsFactory._pause -->
+<g id="node17" class="node" pointer-events="visible" data-name="NFTsFactory._pause">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="364.55" cy="-281" rx="37.71" ry="18" style=""/>
+<text text-anchor="middle" x="364.55" y="-276.8" font-family="Times,serif" font-size="14.00" style="">_pause</text>
+</g>
+<!-- NFTsFactory.pause&#45;&gt;NFTsFactory._pause -->
+<g id="edge7" class="edge" data-name="NFTsFactory.pause-&gt;NFTsFactory._pause">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M149.51,-496.47C171.29,-494.35 199.03,-487.93 216.13,-470 267.04,-416.62 200.48,-360.65 252.13,-308 268.81,-291 294.25,-283.99 316.61,-281.35" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="316.98,-284.83 326.62,-280.42 316.34,-277.86 316.98,-284.83" style=""/>
+</g>
+<!-- NFTsFactory.unpause -->
+<g id="node4" class="node" pointer-events="visible" data-name="NFTsFactory.unpause">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="116.07" cy="-443" rx="42.86" ry="18" style=""/>
+<text text-anchor="middle" x="116.07" y="-438.8" font-family="Times,serif" font-size="14.00" style="">unpause</text>
+</g>
+<!-- NFTsFactory._unpause -->
+<g id="node18" class="node" pointer-events="visible" data-name="NFTsFactory._unpause">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="364.55" cy="-227" rx="47.52" ry="18" style=""/>
+<text text-anchor="middle" x="364.55" y="-222.8" font-family="Times,serif" font-size="14.00" style="">_unpause</text>
+</g>
+<!-- NFTsFactory.unpause&#45;&gt;NFTsFactory._unpause -->
+<g id="edge8" class="edge" data-name="NFTsFactory.unpause-&gt;NFTsFactory._unpause">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M158.74,-441.34C178.68,-438.38 201.37,-431.48 216.13,-416 267.04,-362.62 200.48,-306.65 252.13,-254 266.38,-239.48 287,-232.25 306.65,-228.81" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="307.4,-232.23 316.79,-227.33 306.39,-225.31 307.4,-232.23" style=""/>
+</g>
+<!-- NFTsFactory.isPaused -->
+<g id="node5" class="node" pointer-events="visible" data-name="NFTsFactory.isPaused">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="116.07" cy="-389" rx="44.67" ry="18" style=""/>
+<text text-anchor="middle" x="116.07" y="-384.8" font-family="Times,serif" font-size="14.00" style="">isPaused</text>
+</g>
+<!-- NFTsFactory.assetContractByWallet -->
+<g id="node6" class="node" pointer-events="visible" data-name="NFTsFactory.assetContractByWallet">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="116.07" cy="-335" rx="100.13" ry="18" style=""/>
+<text text-anchor="middle" x="116.07" y="-330.8" font-family="Times,serif" font-size="14.00" style="">assetContractByWallet</text>
+</g>
+<!-- NFTsFactory.numOfAssets -->
+<g id="node7" class="node" pointer-events="visible" data-name="NFTsFactory.numOfAssets">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="116.07" cy="-281" rx="63.72" ry="18" style=""/>
+<text text-anchor="middle" x="116.07" y="-276.8" font-family="Times,serif" font-size="14.00" style="">numOfAssets</text>
+</g>
+<!-- NFTsFactory.assetContractById -->
+<g id="node8" class="node" pointer-events="visible" data-name="NFTsFactory.assetContractById">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="116.07" cy="-227" rx="82.25" ry="18" style=""/>
+<text text-anchor="middle" x="116.07" y="-222.8" font-family="Times,serif" font-size="14.00" style="">assetContractById</text>
+</g>
+<!-- NFTsFactory.getAllAssets -->
+<g id="node9" class="node" pointer-events="visible" data-name="NFTsFactory.getAllAssets">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="116.07" cy="-173" rx="60.28" ry="18" style=""/>
+<text text-anchor="middle" x="116.07" y="-168.8" font-family="Times,serif" font-size="14.00" style="">getAllAssets</text>
+</g>
+<!-- NFTsFactory._authorizeUpgrade -->
+<g id="node10" class="node" pointer-events="visible" data-name="NFTsFactory._authorizeUpgrade">
+
+<ellipse fill="#f2c383" stroke="#f2c383" stroke-width="3" cx="116.07" cy="-119" rx="85.08" ry="18" style=""/>
+<text text-anchor="middle" x="116.07" y="-114.8" font-family="Times,serif" font-size="14.00" style="">_authorizeUpgrade</text>
+</g>
+<!-- AddressUpgradeable.isContract -->
+<g id="node19" class="node" pointer-events="visible" data-name="AddressUpgradeable.isContract">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="364.55" cy="-34" rx="50.96" ry="18" style=""/>
+<text text-anchor="middle" x="364.55" y="-29.8" font-family="Times,serif" font-size="14.00" style="">isContract</text>
+</g>
+<!-- NFTsFactory._authorizeUpgrade&#45;&gt;AddressUpgradeable.isContract -->
+<g id="edge9" class="edge" data-name="NFTsFactory._authorizeUpgrade-&gt;AddressUpgradeable.isContract">
+
+<path fill="none" stroke="white" stroke-width="2" d="M161.42,-103.71C205.62,-88.46 273.17,-65.17 317.84,-49.76" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="319.25,-52.98 327.56,-46.41 316.97,-46.36 319.25,-52.98" style=""/>
+</g>
+<!-- key -->
+<g id="node20" class="node" pointer-events="visible" data-name="key">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="181.07,-760 51.07,-760 51.07,-672 181.07,-672 181.07,-760" style=""/>
+<text text-anchor="start" x="100.7" y="-741.4" font-family="Times,serif" font-size="14.00" style="">Internal Call</text>
+<text text-anchor="start" x="96.81" y="-721.4" font-family="Times,serif" font-size="14.00" style="">External Call</text>
+<text text-anchor="start" x="74.27" y="-701.4" font-family="Times,serif" font-size="14.00" style="">Defined Contract</text>
+<text text-anchor="start" x="60.67" y="-681.4" font-family="Times,serif" font-size="14.00" style="">Undefined Contract</text>
+</g>
+<!-- key2 -->
+<g id="node21" class="node" pointer-events="visible" data-name="key2">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="391.55,-760 337.55,-760 337.55,-672 391.55,-672 391.55,-760" style=""/>
+<text text-anchor="start" x="354.55" y="-741.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<text text-anchor="start" x="354.55" y="-721.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<polygon fill="#445773" stroke="transparent" points="352.55,-696 352.55,-716 377.55,-716 377.55,-696 352.55,-696" style=""/>
+<text text-anchor="start" x="354.55" y="-701.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<polygon fill="none" stroke="#e8726d" points="354.55,-678 354.55,-694 375.55,-694 375.55,-678 354.55,-678" style=""/>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge10" class="edge" data-name="key-&gt;key2">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M174.07,-746C249.41,-746 270.78,-746 341.27,-746" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="341.55,-749.5 351.55,-746 341.55,-742.5 341.55,-749.5" style=""/>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge11" class="edge" data-name="key-&gt;key2">
+
+<path fill="none" stroke="white" stroke-width="2" d="M174.07,-726C249.41,-726 270.78,-726 341.27,-726" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="341.55,-729.5 351.55,-726 341.55,-722.5 341.55,-729.5" style=""/>
+</g>
+</g>
+</svg>

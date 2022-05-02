@@ -33,8 +33,8 @@ contract VaultFactory is Initializable, IVaultFactory, PausableUpgradeable, Owna
         VaultAddress = address(new Vault());
     }
 
-    function deployVault(NFTs _Tokens, address hoa, address treasury, string memory name_, string memory symbol_) public virtual whenNotPaused onlyOwner returns(address, uint256){
-      ERC1967Proxy proxy = new ERC1967Proxy(VaultAddress, abi.encodeWithSelector(Vault(address(0)).initialize.selector, _Tokens, hoa, treasury, name_, symbol_));
+    function deployVault(NFTs _Tokens, address hoa, address treasury, string memory name_, string memory symbol_, uint256 serialNo, uint256 _tokenId) public virtual whenNotPaused onlyOwner returns(address, uint256){
+      ERC1967Proxy proxy = new ERC1967Proxy(VaultAddress, abi.encodeWithSelector(Vault(address(0)).initialize.selector, _Tokens, hoa, treasury, name_, symbol_, serialNo, _tokenId));
 
       address vaultProxyAddr = address(proxy);
       uint256 vaultId = vaults.length;
@@ -42,7 +42,7 @@ contract VaultFactory is Initializable, IVaultFactory, PausableUpgradeable, Owna
       assetVaults[address(_Tokens)].push(vaultProxyAddr);
       vaults.push(vaultProxyAddr);
     
-      emit VaultInit (vaultId, vaultProxyAddr, address(_Tokens), block.timestamp);
+      emit VaultInit (vaultId, _tokenId, vaultProxyAddr, address(_Tokens), block.timestamp);
 
       emit VaultProxyDeployed(vaultProxyAddr);
 
@@ -53,7 +53,7 @@ contract VaultFactory is Initializable, IVaultFactory, PausableUpgradeable, Owna
         return vaults[vaultNo];
     }
 
-    function getAllVaults() public view virtual override returns(address[] memory) {
+    function getAllVaults() external view virtual override returns(address[] memory) {
         return vaults;
     }
 
