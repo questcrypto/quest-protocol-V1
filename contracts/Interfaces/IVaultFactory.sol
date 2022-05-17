@@ -3,7 +3,7 @@ pragma solidity ^0.8.10;
 
 interface IVaultFactory {
 
-    event VaultInit (uint256 indexed vaultId, address vaultAddress, address assetAddress, uint256 time);
+    event VaultInit (uint256 indexed vaultId, uint256 tokenId, address vaultAddress, address assetAddress, uint256 time);
 
     event VaultProxyDeployed(address indexed VaultProxyAddr);
 
